@@ -1,0 +1,56 @@
+.murree-section {
+    padding: 90px 8%;
+}
+.murree-services {
+    background: #f7f9f6;
+}
+.murree-service-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.murree-service-card {
+    padding: 24px 20px;
+    background: white;
+    border: 1px solid #e7ece6;
+    border-radius: 12px;
+    transition: transform 0.25s ease;
+}
+
+.murree-service-card:hover {
+    transform: translateY(-5px);
+}
+
+.murree-service-card>span {
+    display: block;
+    margin-bottom: 20px;
+    font-size: 29px;
+}
+
+.murree-service-card h3 {
+    margin: 0 0 10px;
+    font-size: 15px;
+}
+
+.murree-service-card p {
+    min-height: 58px;
+    color: var(--murree-muted);
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.murree-service-card small {
+    display: block;
+    margin-top: 15px;
+    color: #77947f;
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.murree-disclaimer {
+    margin-top: 25px;
+    color: var(--murree-muted);
+    font-size: 11px;
+    line-height: 1.8;
+}

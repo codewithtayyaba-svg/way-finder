@@ -1,0 +1,11 @@
+.murree-final-cta .murree-section-label {
+    color: #b6d5bf;
+}
+
+.murree-text-link {
+    display: inline-block;
+    margin-top: 13px;
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 700;
+}
