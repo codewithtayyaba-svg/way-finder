@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
+import { destinations } from "@/components/data/destinations";
 
 const services = [
     {
@@ -53,138 +55,6 @@ const services = [
     },
 ];
 
-const destinations = [
-    {
-        name: "Hunza Valley",
-        province: "Gilgit-Baltistan",
-        description: "Mountain views, peaceful valleys and unforgettable sunsets.",
-        image:
-            "hunza valley.jpg",
-        category: "Mountains",
-    },
-    {
-        name: "Skardu",
-        province: "Gilgit-Baltistan",
-        description: "Explore beautiful lakes, mountains and scenic landscapes.",
-        image:
-            "Skardu.jpg",
-        category: "Adventure",
-    },
-    {
-        name: "Fairy Meadows",
-        province: "Gilgit-Baltistan",
-        description: "A magical mountain destination for nature lovers.",
-        image:
-            "https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=900&q=85",
-        category: "Nature",
-    },
-    {
-        name: "Swat Valley",
-        province: "Khyber Pakhtunkhwa",
-        description: "Discover green valleys, rivers and refreshing scenery.",
-        image:
-            "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=85",
-        category: "Nature",
-    },
-    {
-        name: "Naran Kaghan",
-        province: "Khyber Pakhtunkhwa",
-        description: "Experience alpine lakes and beautiful mountain roads.",
-        image:
-            "naran kaghan.jpg",
-        category: "Mountains",
-    },
-    {
-        name: "Islamabad",
-        province: "Federal Capital",
-        description: "Enjoy green hills, iconic landmarks and city attractions.",
-        image:
-            "islamabad.jpg",
-        category: "City",
-    },
-    {
-        name: "Lahore",
-        province: "Punjab",
-        description: "Explore historical architecture, culture and delicious food.",
-        image:
-            "lahore.jpg",
-        category: "Culture",
-    },
-    {
-        name: "Gwadar",
-        province: "Balochistan",
-        description: "Discover coastal landscapes and the beauty of the Arabian Sea.",
-        image:
-            "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=85",
-        category: "Beach",
-    },
-    {
-        name: "Murree",
-        province: "Punjab",
-        description: "Enjoy misty hills, pine forests and cool mountain air.",
-        image:
-            "Murree-1-scaled.jpg",
-        category: "Nature",
-    },
-    {
-        name: "Manora ",
-        province: "sindh",
-        description: "Manora Beach is a scenic seaside spot perfect for relaxation and ocean views.",
-        image:
-            "manora.jpg",
-        category: "Beach",
-    },
-    {
-        name: "Quetta",
-        province: "Balochistan",
-        description: "Explore the vibrant culture and historical sites of Quetta.",
-        image:
-            "quetta.jpg",
-        category: "Culture",
-    },
-    {
-        name: "Bhawalpur",
-        province: "Punjab",
-        description: "Explore historical architecture, culture and delicious food.",
-        image:
-            "bahawalpur.jpg",
-        category: "Culture",
-    },
-    {
-        name: "Karachi",
-        province: "Sindh",
-        description: "Explore the bustling city of Karachi and its rich cultural heritage.",
-        image:
-            "karachi.webp",
-        category: "City",
-    },
-    {
-        name: "Multan",
-        province: "Punjab",
-        description: "Explore the historic city of Multan and its rich cultural heritage.",
-        image:
-            "multan.jpg",
-        category: "City",
-    },
-    {
-        name: "Neelum Valley",
-        province: "kashmir",
-        description: "famous for its lush green mountains, crystal-clear rivers, and breathtaking natural beauty.",
-        image:
-            "neelum valley.jpg",
-        category: "Adventure",
-    },
-    {
-        name: "Fort Manru",
-        province: "punjab",
-        description: "a scenic hill station in Punjab, known for its cool weather and beautiful mountain views.",
-        image:
-            "fort manru.jpg",
-        category: "Adventure",
-    },
-
-];
-
 const reviews = [
     {
         name: "Ayesha Khan",
@@ -217,7 +87,6 @@ const navItems = [
     { icon: "🧭", label: "Destinations", href: "#destinations" },
     { icon: "🏥", label: "Hospitals", href: "#nearby" },
     { icon: "🏨", label: "Hotels", href: "#nearby" },
-    { icon: "🚘", label: "Car Rental", href: "#nearby" },
     { icon: "🗺️", label: "Trip Planner", href: "#trip-planner" },
     { icon: "💰", label: "Budget Planner", href: "#budget" },
     { icon: "👥", label: "Travel Buddy", href: "#travel-buddy" },
@@ -497,12 +366,20 @@ export default function Home() {
                                     style={{ "--delay": `${index * 70}ms` }}
                                 >
                                     <div className="destination-image-wrap">
-                                        <image
-                                            src={destination.image}
-                                            alt={destination.name}
-                                            className="destination-image"
-                                            loading="lazy"
-                                        />
+                                        <Link
+                                            href={`/destinations/${destination.slug}`}
+                                            aria-label={`Open ${destination.name} destination page`}
+                                        >
+                                            <Image
+                                                src={destination.image}
+                                                alt={destination.name}
+                                                className="destination-image"
+                                                fill
+                                                sizes="(max-width: 900px) 100vw, 33vw"
+                                                loading="lazy"
+                                                unoptimized
+                                            />
+                                        </Link>
 
                                         <span className="destination-category">
                                             {destination.category}
@@ -527,7 +404,11 @@ export default function Home() {
                                             <span>⌖</span> {destination.province}
                                         </div>
 
-                                        <h3>{destination.name}</h3>
+                                        <h3>
+                                            <Link href={`/destinations/${destination.slug}`}>
+                                                {destination.name}
+                                            </Link>
+                                        </h3>
                                         <p>{destination.description}</p>
 
                                         <a
@@ -563,10 +444,13 @@ export default function Home() {
 
                 <section className="planning-section" id="trip-planner">
                     <div className="planning-image">
-                        <image
+                        <Image
                             src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1200&q=85"
                             alt="Scenic mountain lake for a travel adventure"
+                            fill
+                            sizes="(max-width: 900px) 100vw, 45vw"
                             loading="lazy"
+                            unoptimized
                         />
 
                         <div className="planning-image-caption">

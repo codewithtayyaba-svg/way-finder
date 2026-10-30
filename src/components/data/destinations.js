@@ -1,0 +1,138 @@
+export const destinations = [
+    {
+        slug: "hunza-valley",
+        name: "Hunza Valley",
+        province: "Gilgit-Baltistan",
+        description: "Mountain views, peaceful valleys and unforgettable sunsets.",
+        image: "/hunza valley.jpg",
+        category: "Mountains",
+    },
+    {
+        slug: "skardu",
+        name: "Skardu",
+        province: "Gilgit-Baltistan",
+        description: "Explore beautiful lakes, mountains and scenic landscapes.",
+        image: "/Skardu.jpg",
+        category: "Adventure",
+    },
+    {
+        slug: "fairy-meadows",
+        name: "Fairy Meadows",
+        province: "Gilgit-Baltistan",
+        description: "A magical mountain destination for nature lovers.",
+        image:
+            "https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=900&q=85",
+        category: "Nature",
+    },
+    {
+        slug: "swat-valley",
+        name: "Swat Valley",
+        province: "Khyber Pakhtunkhwa",
+        description: "Discover green valleys, rivers and refreshing scenery.",
+        image:
+            "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=85",
+        category: "Nature",
+    },
+    {
+        slug: "naran-kaghan",
+        name: "Naran Kaghan",
+        province: "Khyber Pakhtunkhwa",
+        description: "Experience alpine lakes and beautiful mountain roads.",
+        image: "/naran kaghan.jpg",
+        category: "Mountains",
+    },
+    {
+        slug: "islamabad",
+        name: "Islamabad",
+        province: "Federal Capital",
+        description: "Enjoy green hills, iconic landmarks and city attractions.",
+        image: "/islamabad.jpg",
+        category: "City",
+    },
+    {
+        slug: "lahore",
+        name: "Lahore",
+        province: "Punjab",
+        description: "Explore historical architecture, culture and delicious food.",
+        image: "/lahore.jpg",
+        category: "Culture",
+    },
+    {
+        slug: "gwadar",
+        name: "Gwadar",
+        province: "Balochistan",
+        description: "Discover coastal landscapes and the beauty of the Arabian Sea.",
+        image:
+            "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=85",
+        category: "Beach",
+    },
+    {
+        slug: "murree",
+        name: "Murree",
+        province: "Punjab",
+        description: "Enjoy misty hills, pine forests and cool mountain air.",
+        image: "/Murree-1-scaled.jpg",
+        category: "Nature",
+    },
+    {
+        slug: "manora",
+        name: "Manora",
+        province: "Sindh",
+        description:
+            "Manora Beach is a scenic seaside spot perfect for relaxation and ocean views.",
+        image: "/manora.jpg",
+        category: "Beach",
+    },
+    {
+        slug: "quetta",
+        name: "Quetta",
+        province: "Balochistan",
+        description: "Explore the vibrant culture and historical sites of Quetta.",
+        image: "/quetta.jpg",
+        category: "Culture",
+    },
+    {
+        slug: "bahawalpur",
+        name: "Bahawalpur",
+        province: "Punjab",
+        description: "Explore historical architecture, culture and delicious food.",
+        image: "/bahawalpur.jpg",
+        category: "Culture",
+    },
+    {
+        slug: "karachi",
+        name: "Karachi",
+        province: "Sindh",
+        description:
+            "Explore the bustling city of Karachi and its rich cultural heritage.",
+        image: "/karachi.webp",
+        category: "City",
+    },
+    {
+        slug: "multan",
+        name: "Multan",
+        province: "Punjab",
+        description:
+            "Explore the historic city of Multan and its rich cultural heritage.",
+        image: "/multan.jpg",
+        category: "City",
+    },
+    {
+        slug: "neelum-valley",
+        name: "Neelum Valley",
+        province: "Kashmir",
+        description:
+            "Famous for its lush green mountains, crystal-clear rivers, and breathtaking natural beauty.",
+        image: "/neelum valley.jpg",
+        category: "Adventure",
+    },
+    {
+        slug: "fort-munro",
+        name: "Fort Munro",
+        province: "Punjab",
+        description:
+            "A scenic hill station in Punjab, known for its cool weather and beautiful mountain views.",
+        image: "/fort manru.jpg",
+        category: "Adventure",
+    },
+];

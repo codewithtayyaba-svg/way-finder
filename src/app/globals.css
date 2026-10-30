@@ -867,6 +867,133 @@ select:focus-visible {
   transform: scale(1.09);
 }
 
+.destination-image-wrap > a {
+  display: block;
+  height: 100%;
+}
+
+.destination-detail-page {
+  min-height: 100vh;
+  background: var(--background);
+}
+
+.destination-detail-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 22px 28px;
+}
+
+.destination-detail-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--green-dark);
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.destination-detail-brand span {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 12px 12px 12px 4px;
+  color: #fff;
+  background: var(--green);
+}
+
+.destination-detail-back {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.destination-detail-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  max-width: 1180px;
+  min-height: min(680px, calc(100vh - 90px));
+  margin: 0 auto 40px;
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--green-dark);
+}
+
+.destination-detail-image,
+.destination-detail-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.destination-detail-image {
+  object-fit: cover;
+}
+
+.destination-detail-overlay {
+  background: linear-gradient(90deg, #102d26e8 0%, #102d2670 55%, #102d261c 100%);
+}
+
+.destination-detail-content {
+  position: relative;
+  max-width: 650px;
+  padding: 64px;
+  color: #fff;
+}
+
+.destination-detail-content > span {
+  color: #d9e8dc;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.destination-detail-content h1 {
+  margin: 14px 0;
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(42px, 7vw, 82px);
+  line-height: 1;
+  letter-spacing: -3px;
+}
+
+.destination-detail-content p {
+  max-width: 540px;
+  margin-bottom: 28px;
+  color: #edf5ef;
+  font-size: 17px;
+}
+
+.destination-detail-button {
+  display: inline-flex;
+  gap: 18px;
+  align-items: center;
+  padding: 13px 20px;
+  border-radius: 8px;
+  color: var(--green-dark);
+  background: #fff;
+  font-weight: 800;
+}
+
+@media (max-width: 700px) {
+  .destination-detail-nav {
+    padding: 18px;
+  }
+
+  .destination-detail-hero {
+    min-height: calc(100vh - 80px);
+    margin: 0 12px 24px;
+  }
+
+  .destination-detail-content {
+    padding: 32px 24px;
+  }
+}
+
 .destination-category {
   position: absolute;
   left: 13px;

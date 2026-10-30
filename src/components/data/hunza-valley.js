@@ -12,3 +12,8 @@ export const hunzavalleysection2 = {
     description: "Explore the natural beauty and rich culture of Hunza Valley.",
     imageUrl: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=85"
 }
+export const nearbySites = {
+    title: "Nearby Attractions",
+    description: "Explore the beautiful surroundings of Hunza Valley and discover its nearby attractions. From historical sites to natural wonders, there's something for everyone to enjoy.",
+    imageUrl: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=85"
+}
