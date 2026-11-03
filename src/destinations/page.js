@@ -129,7 +129,7 @@ export const MurreePage = () => {
                             Explore Attractions <span>→</span>
                         </Link>
 
-                        <Link href="#trip-info" className="murree-outline-button">
+                        <Link href="/#trip-planner" className="murree-outline-button">
                             Travel Guide
                         </Link>
                     </div>
@@ -209,7 +209,7 @@ export const MurreePage = () => {
                         Way Finder helps you organize your journey in one place.
                     </p>
 
-                    <Link href="#trip-info" className="murree-text-link">
+                    <Link href="/#trip-planner" className="murree-text-link">
                         Explore the travel guide ↗
                     </Link>
                 </div>
@@ -282,7 +282,7 @@ export const MurreePage = () => {
 
                                 <p>{place.description}</p>
 
-                                <Link href="#trip-info" className="murree-place-link">
+                                <Link href="/#trip-planner" className="murree-place-link">
                                     Add to your plan <span>↗</span>
                                 </Link>
                             </div>

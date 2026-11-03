@@ -85,10 +85,9 @@ const reviews = [
 const navItems = [
     { icon: "⌂", label: "Home", href: "#home" },
     { icon: "🧭", label: "Destinations", href: "#destinations" },
-    { icon: "🏥", label: "Hospitals", href: "#nearby" },
+    { icon: "🏥", label: "Hospitals", href: "/nearby" },
     { icon: "🏨", label: "Hotels", href: "#nearby" },
     { icon: "🗺️", label: "Trip Planner", href: "#trip-planner" },
-    { icon: "💰", label: "Budget Planner", href: "#budget" },
     { icon: "👥", label: "Travel Buddy", href: "#travel-buddy" },
     { icon: "🌤️", label: "Weather", href: "#weather" },
     { icon: "✨", label: "AI Assistant", href: "#ai-assistant" },
@@ -96,12 +95,17 @@ const navItems = [
 
 export default function Home() {
     const [search, setSearch] = useState("");
+    const [citySearch, setCitySearch] = useState("");
+    const [places, setPlaces] = useState([]);
+    const [placesLoading, setPlacesLoading] = useState(false);
+    const [placesError, setPlacesError] = useState("");
+    const [searchedCity, setSearchedCity] = useState("");
     const [activeCategory, setActiveCategory] = useState("All");
     const [menuOpen, setMenuOpen] = useState(false);
     const [tripDestination, setTripDestination] = useState("");
     const [days, setDays] = useState("3");
     const [travelers, setTravelers] = useState("2");
-    const [budget, setBudget] = useState("30000");
+    const [budget, setBudget] = useState("");
     const [tripResult, setTripResult] = useState(null);
     const [chatInput, setChatInput] = useState("");
     const [chatMessages, setChatMessages] = useState([
@@ -132,6 +136,75 @@ export default function Home() {
 
         return matchesCategory && matchesSearch;
     });
+    async function handlePlaceSearch(event) {
+    event.preventDefault();
+
+    const location = citySearch.trim();
+
+    if (!location) {
+        setPlacesError("Please enter a city or destination.");
+        return;
+    }
+
+    setPlacesLoading(true);
+    setPlacesError("");
+    setPlaces([]);
+    setSearchedCity(location);
+
+    try {
+        const response = await fetch("/api/places", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ city: location }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(
+                data.error || "Unable to find tourist attractions."
+            );
+        }
+
+        if (!data.places || data.places.length === 0) {
+            setPlacesError("No famous places found. Try another city.");
+            return;
+        }
+        const detailedPlaces = await Promise.all(
+            data.places.slice(0, 5).map(async (place) => {
+                const details = await getPlaceDetails(place.id);
+
+                return {
+                    ...details,
+                };
+            })
+        );
+
+        setPlaces(detailedPlaces);
+
+    } catch (error) {
+        console.error("Place Search Error:", error);
+        setPlacesError(error.message);
+
+    } finally {
+        setPlacesLoading(false);
+    }
+}
+
+async function getPlaceDetails(placeId) {
+    const response = await fetch(
+        `/api/cities?placeId=${encodeURIComponent(placeId)}`
+    );
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.error || "Unable to fetch place details.");
+    }
+
+    return data;
+}
 
     function handleTripSubmit(event) {
         event.preventDefault();
@@ -223,12 +296,6 @@ export default function Home() {
                         ☰
                     </button>
 
-                    <div className="topbar-brand">
-                        <span className="topbar-brand-mark">W</span>
-                        <span className="topbar-brand-text">Wayfinder</span>
-                    </div>
-
-
                     <div className="topbar-right">
                         <span className="online-dot"></span>
                         <span className="topbar-location">Discover Pakistan</span>
@@ -315,6 +382,121 @@ export default function Home() {
                         ))}
                     </div>
                 </section>
+                
+{/* Smart City Explorer */}
+
+<section className="section city-explorer-section" id="city-explorer">
+
+    <div className="section-heading">
+        <div>
+            <div className="eyebrow">
+                <span className="eyebrow-line"></span>
+                DISCOVER THE WORLD
+            </div>
+
+            <h2>
+                Explore any <span>city or place.</span>
+            </h2>
+
+            <p className="section-description">
+                Don&apos;t know where to go? Enter any city or destination
+                and discover its famous tourist attractions.
+            </p>
+        </div>
+    </div>
+
+    <form className="city-search-form" onSubmit={handlePlaceSearch}>
+
+        <input
+            type="text"
+            placeholder="Enter any city or place"
+            value={citySearch}
+            onChange={(event) => setCitySearch(event.target.value)}
+        />
+
+        <button
+            type="submit"
+            disabled={placesLoading}
+            className="primary-button"
+        >
+            {placesLoading ? "Searching..." : "Explore Now →"}
+        </button>
+
+    </form>
+
+    {placesLoading && (
+        <div className="places-loading">
+            Discovering amazing places for you...
+        </div>
+    )}
+
+    {placesError && (
+        <div className="places-error">
+            {placesError}
+        </div>
+    )}
+
+    {places.length > 0 && (
+        <div className="city-results">
+
+            <div className="city-results-heading">
+                <h3>
+                    Famous Places in {searchedCity}
+                </h3>
+
+                <span>Top {places.length} places</span>
+            </div>
+
+            <div className="city-places-grid">
+
+                {places.map((place) => (
+
+                    <article
+                        className="city-place-card"
+                        key={place.id}
+                    >
+
+                        <div className="city-place-icon">
+                            📍
+                        </div>
+
+                        <div className="city-place-info">
+
+                            <h3>
+                                {place.displayName?.text || "Tourist Attraction"}
+                            </h3>
+
+                            <p>
+                                {place.formattedAddress || "Location information unavailable"}
+                            </p>
+
+                            {place.rating && (
+                                <div className="city-place-rating">
+                                    ⭐ {place.rating}
+                                </div>
+                            )}
+
+                            <a
+                                href={place.googleMapsUri}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="city-place-link"
+                            >
+                                View on Google Maps ↗
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                ))}
+
+            </div>
+
+        </div>
+    )}
+
+</section>
 
                 <section className="destination-section" id="destinations">
                     <div className="section">
@@ -469,15 +651,15 @@ export default function Home() {
                         </div>
 
                         <h2>
-                            Great journeys
-                            <br />
-                            start with a <span>plan.</span>
-                        </h2>
+              Make every moment
+    <br />
+    <span>count.</span>
+</h2>
 
-                        <p>
-                            Create a simple travel budget and estimate how much
-                            you can spend per day and per traveller.
-                        </p>
+                       <p>
+    Great journeys start with a plan. Create your travel budget
+    and estimate how much you can spend per day and per traveller.
+      </p>
 
                         <form className="trip-form" onSubmit={handleTripSubmit}>
                             <label>
@@ -531,15 +713,18 @@ export default function Home() {
 
                             <label>
                                 Total budget (PKR)
+                                
                                 <input
                                     type="number"
                                     min="0"
+                                     placeholder="Enter your total budget"
                                     value={budget}
                                     onChange={(event) => setBudget(event.target.value)}
                                     required
                                 />
+                  
                             </label>
-
+                            
                             <button type="submit" className="primary-button trip-submit">
                                 Calculate my budget <span>→</span>
                             </button>
@@ -840,11 +1025,6 @@ export default function Home() {
                 </section>
 
                 <footer className="site-footer">
-                    <a href="#home" className="footer-brand">
-                        <span className="brand-symbol">W</span>
-                        <strong>wayfinder</strong>
-                    </a>
-
                     <p>Discover more. Travel smarter. Explore Pakistan.</p>
 
                     <div className="footer-links">

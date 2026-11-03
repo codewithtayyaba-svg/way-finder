@@ -1,3 +1,29 @@
+.murree-about {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 70px;
+}
+
+.murree-about-content {
+    grid-column: 1;
+}
+
+.murree-about-visual {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.murree-about--compact .murree-about-visual {
+    display: flex;
+    justify-content: center;
+}
+
+.murree-about--compact .murree-about-visual > img {
+    width: min(100%, 360px);
+    height: 260px;
+}
+
 .murree-final-cta .murree-section-label {
     color: #b6d5bf;
 }
@@ -8,4 +34,21 @@
     color: var(--green);
     font-size: 13px;
     font-weight: 700;
+}
+
+@media (max-width: 700px) {
+    .murree-about {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .murree-about-content,
+    .murree-about-visual {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .murree-about--compact .murree-about-visual > img {
+        width: 100%;
+    }
 }

@@ -1,3 +1,4 @@
+"use client";
 import "./hero-sectoin.css";
 import Image from "next/image";
 import Link from "next/link";
@@ -48,7 +49,7 @@ export const HeroSection = (data) => {
                         Explore Attractions <span>→</span>
                     </Link>
 
-                    <Link href="#trip-info" className="murree-outline-button">
+                    <Link href="/#trip-planner" className="murree-outline-button">
                         Travel Guide
                     </Link>
                 </div>

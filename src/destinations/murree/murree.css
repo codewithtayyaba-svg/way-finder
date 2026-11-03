@@ -377,7 +377,7 @@
     color: var(--murree-muted);
     font-size: 10px;
 }
-
+/*attraction*/
 .murree-attractions {
     background: var(--murree-light);
 }
@@ -484,7 +484,7 @@
     font-size: 12px;
     font-weight: 700;
 }
-
+/*planning*/
 .murree-planning {
     padding: 95px 8%;
     background: white;

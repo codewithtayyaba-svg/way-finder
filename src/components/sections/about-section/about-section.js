@@ -3,8 +3,10 @@ import Link from "next/link";
 import "./about-section.css";
 
 export const AboutSection = (data) => {
+    const sectionData = data.data;
+
     return (
-        <section className="murree-section murree-about">
+        <section className={`murree-section murree-about ${sectionData.imageVariant ? `murree-about--${sectionData.imageVariant}` : ""}`}>
             <div className="murree-about-content">
                 <span className="murree-section-label">
                     YOUR NEXT MOUNTAIN ESCAPE
@@ -20,15 +22,15 @@ export const AboutSection = (data) => {
                     {data.data.description}
                 </p>
 
-                <Link href="#trip-info" className="murree-text-link">
+                <Link href="/#trip-planner" className="murree-text-link">
                     Explore the travel guide ↗
                 </Link>
             </div>
 
             <div className="murree-about-visual">
                 <Image
-                    src={data.data.imageUrl}
-                    alt="A scenic landscape surrounded by mountains"
+                    src={sectionData.imageUrl}
+                    alt={sectionData.imageAlt || "A scenic landscape surrounded by mountains"}
                     width={2560}
                     height={1440}
                     sizes="(max-width: 768px) 100vw, 50vw"
