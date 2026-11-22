@@ -74,23 +74,9 @@ select:focus-visible {
 }
 
 .main-area {
-  margin-left: 255px;
+  margin-left: 0;
+  width: 100%;
   min-width: 0;
-}
-
-
-.sidebar {
-  width: 255px;
-  height: 100vh;
-  position: fixed;
-  inset: 0 auto 0 0;
-  z-index: 100;
-  display: flex;
-  flex-direction: column;
-  background: #fff;
-  border-right: 1px solid var(--border);
-  padding: 27px 18px 17px;
-  overflow-y: auto;
 }
 
 .brand {
@@ -960,6 +946,7 @@ select:focus-visible {
   color: var(--green-dark);
   font-size: 14px;
   line-height: 1.4;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
@@ -971,6 +958,7 @@ select:focus-visible {
   color: #89958c;
   font-size: 10px;
   line-height: 1.6;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
@@ -2893,4 +2881,42 @@ select:focus-visible {
         flex-direction: column;
         gap: 10px;
     }
+}
+
+
+/* Responsive Navbar */
+
+@media (max-width: 900px) {
+  .navbar-container {
+    flex-wrap: wrap;
+    padding: 12px 5%;
+  }
+
+  .navbar-toggle {
+    display: block;
+    margin-left: auto;
+  }
+
+  .navbar-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    order: 3;
+  }
+
+  .navbar-links.navbar-open {
+    display: flex;
+  }
+
+  .navbar-links a {
+    width: 100%;
+    padding: 13px 0;
+    border-top: 1px solid #eeeeee;
+  }
+
+  .navbar-button {
+    display: none;
+  }
 }

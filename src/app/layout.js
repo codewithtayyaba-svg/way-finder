@@ -1,4 +1,5 @@
 import "./globals.css";
+import Navbar from "@/components/navbar/navbar";
 
 export const metadata = {
   title: "Way Finder | Discover Pakistan",
@@ -9,7 +10,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }

@@ -82,17 +82,6 @@ const reviews = [
     },
 ];
 
-const navItems = [
-    { icon: "⌂", label: "Home", href: "#home" },
-    { icon: "🧭", label: "Destinations", href: "#destinations" },
-    { icon: "🏥", label: "Hospitals", href: "/nearby" },
-    { icon: "🏨", label: "Hotels", href: "#nearby" },
-    { icon: "🗺️", label: "Trip Planner", href: "#trip-planner" },
-    { icon: "👥", label: "Travel Buddy", href: "#travel-buddy" },
-    { icon: "🌤️", label: "Weather", href: "#weather" },
-    { icon: "✨", label: "AI Assistant", href: "#ai-assistant" },
-];
-
 export default function Home() {
     const [search, setSearch] = useState("");
     const [citySearch, setCitySearch] = useState("");
@@ -101,7 +90,7 @@ export default function Home() {
     const [placesError, setPlacesError] = useState("");
     const [searchedCity, setSearchedCity] = useState("");
     const [activeCategory, setActiveCategory] = useState("All");
-    const [menuOpen, setMenuOpen] = useState(false);
+
     const [tripDestination, setTripDestination] = useState("");
     const [days, setDays] = useState("3");
     const [travelers, setTravelers] = useState("2");
@@ -245,65 +234,9 @@ async function getPlaceDetails(placeId) {
 
     return (
         <main id="home" className="website-shell">
-            <aside className={`sidebar ${menuOpen ? "sidebar-open" : ""}`}>
-                <a href="#home" className="brand">
-                    <span className="brand-symbol">W</span>
-                    <span>
-                        <strong>wayfinder</strong>
-                        <small>EXPLORE MORE</small>
-                    </span>
-                </a>
-
-                <div className="sidebar-label">DISCOVER</div>
-
-                <nav className="sidebar-nav">
-                    {navItems.map((item, index) => (
-                        <a
-                            key={item.label}
-                            href={item.href}
-                            className={`nav-link ${index === 0 ? "nav-active" : ""}`}
-                            onClick={() => setMenuOpen(false)}
-                        >
-                            <span className="nav-icon">{item.icon}</span>
-                            <span>{item.label}</span>
-                            {item.label === "AI Assistant" && (
-                                <span className="new-badge">AI</span>
-                            )}
-                        </a>
-                    ))}
-                </nav>
-
-                <div className="sidebar-bottom">
-                    <div className="sidebar-promo">
-                        <span className="promo-icon">🏔️</span>
-                        <h3>Your next adventure awaits.</h3>
-                        <p>Discover the beauty of Pakistan with Way Finder.</p>
-                        <a href="#destinations" className="promo-link">
-                            Start exploring ↗
-                        </a>
-                    </div>
-
-                </div>
-            </aside>
+           
 
             <div className="main-area">
-                <header className="topbar">
-                    <button
-                        className="mobile-menu"
-                        onClick={() => setMenuOpen(!menuOpen)}
-                        aria-label="Toggle navigation"
-                    >
-                        ☰
-                    </button>
-
-                    <div className="topbar-right">
-                        <span className="online-dot"></span>
-                        <span className="topbar-location">Discover Pakistan</span>
-                        <a href="#login" className="topbar-button topbar-login">
-                            Login
-                        </a>
-                    </div>
-                </header>
 
                 <section className="hero-section">
                     <div className="hero-image"></div>
@@ -813,41 +746,6 @@ async function getPlaceDetails(placeId) {
                         verified listings and bookings will be connected later.
                     </p>
                 </section>
-
-                <section className="weather-section" id="weather">
-                    <div className="weather-copy">
-                        <div className="eyebrow">
-                            <span className="eyebrow-line"></span>
-                            CHECK BEFORE YOU GO
-                        </div>
-                        <h2>
-                            Let the weather
-                            <br />
-                            guide your <span>adventure.</span>
-                        </h2>
-                        <p>
-                            Check conditions at your destination before you leave.
-                            Weather forecasts will help you prepare for changing
-                            mountain and coastal conditions.
-                        </p>
-                        <a href="#trip-planner" className="light-button">
-                            Plan around the weather <span>→</span>
-                        </a>
-                    </div>
-
-                    <div className="weather-visual">
-                        <div className="weather-orb">☀️</div>
-                        <span className="weather-decoration weather-cloud-one">☁</span>
-                        <span className="weather-decoration weather-cloud-two">☁</span>
-                        <div className="weather-glass-card">
-                            <span>WEATHER PREVIEW</span>
-                            <strong>Pakistan</strong>
-                            <p>Ready for your next trip?</p>
-                            <small>Connect a weather API for live conditions.</small>
-                        </div>
-                    </div>
-                </section>
-
                 <section className="buddy-section" id="travel-buddy">
                     <div className="buddy-illustration">
                         <span className="buddy-sun"></span>

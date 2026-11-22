@@ -1,0 +1,93 @@
+
+.main-navbar {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #ffffff;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-container {
+  width: 100%;
+  min-height: 75px;
+  margin: 0 auto;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+/* Logo */
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #12372a;
+  font-size: 23px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.navbar-logo {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1b6b4b;
+  color: white;
+  border-radius: 12px;
+}
+
+/* Navigation Links */
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #35483f;
+  font-size: 15px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+  color: #1b8a5a;
+}
+
+/* Explore Button */
+
+.navbar-button {
+  background: #1b6b4b;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 0.3s ease;
+}
+
+.navbar-button:hover {
+  background: #124d35;
+}
+
+/* Mobile Toggle Button */
+
+.navbar-toggle {
+  display: none;
+  border: none;
+  background: transparent;
+  color: #12372a;
+  font-size: 27px;
+  cursor: pointer;
+}
