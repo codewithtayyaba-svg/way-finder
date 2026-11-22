@@ -34,7 +34,7 @@ const services = [
         title: "Travel Buddy",
         description:
             "Find people with similar travel plans and explore together.",
-        link: "#travel-buddy",
+        link: "/travel-buddy",
         color: "purple",
     },
     {

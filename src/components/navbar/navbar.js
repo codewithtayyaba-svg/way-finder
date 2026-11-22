@@ -9,7 +9,7 @@ export default function Navbar() {
         { name: "Home", href: "/" },
         { name: "Destinations", href: "/#destinations" },
         { name: "Trip Planner", href: "/#trip-planner" },
-        { name: "Travel Buddy", href: "/#travel-buddy" },
+        { name: "Travel Buddy", href: "/travel-buddy" },
         { name: "AI Assistant", href: "/#ai-assistant" },
     ];
 
